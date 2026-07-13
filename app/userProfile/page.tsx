@@ -6,7 +6,7 @@ import hidePass from "@/public/password/eye-slash-alt-svgrepo-com.svg"
 import { useState } from "react"
 
 
-export default function Login() {
+export default function UserProfile() {
 
     const [showPassword, setShowPassword] = useState(false)
 
@@ -15,7 +15,7 @@ export default function Login() {
             <div className="container mx-auto">
                 <div className="flex flex-col items-center justify-center">
                     <div className="bg-white border border-secondary text-center xl:w-1/4 w-2/3 px-6 py-10 space-y-3 shadow-md rounded-sm">
-                        <h1 className="font-inter text-black font-semibold text-3xl mb-10">Welcome back!</h1>
+                        <h1 className="font-inter text-black font-semibold text-3xl mb-10">Informasi Akun</h1>
                         <input className="border border-slate-500 w-full p-2 rounded-md font-inter text-secondary focus:border-white" placeholder="Username" autoComplete="off" />
                         <div className="relative">
                             <input type={showPassword ? "text" : "password"} className="border border-slate-500 w-full p-2 rounded-md font-inter text-secondary focus:border-white" placeholder="Password" autoComplete="off" />
@@ -23,7 +23,7 @@ export default function Login() {
                                 <Image src={showPassword ? hidePass : showPass} alt={showPassword ? "Hide password" : "Show password"} width={20} height={20} />
                             </button>
                         </div>
-                        <button className="border rounded-md w-full py-1 font-inter bg-green-500 border-green-500  text-white font-poppins hover:bg-green-600 hover:border-green-600 cursor-pointer duration-200">Login</button>
+                        <button className="border rounded-md w-full py-1 font-inter bg-red-500 border-red-500  text-white font-poppins hover:bg-red-600 hover:border-red-600 cursor-pointer duration-200">Logout</button>
                         <a href="/register-operator"><button className="text-white px-2 py-1  font-poppins">Create Account</button></a>
                     </div>
                 </div>

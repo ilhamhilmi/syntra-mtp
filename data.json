@@ -1,0 +1,9 @@
+{
+  "devices": {
+    "lamp1": false,
+    "lamp2": false,
+    "lamp3": false
+  },
+  "motion": false,
+  "lastUpdate": 0
+}
