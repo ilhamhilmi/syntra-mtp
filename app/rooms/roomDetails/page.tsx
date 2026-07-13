@@ -13,6 +13,8 @@ export default function RoomDetails() {
         lamp3: false
     })
 
+    const [motion, setMotion] = useState(false)
+
     useEffect(() => {
         const devicesRef = ref(db, "devices")
 
@@ -22,7 +24,19 @@ export default function RoomDetails() {
                 console.log(snapshot.val())
             }
         })
-        return () => unsubscribe()
+
+        const motionRef = ref(db, "devices/motion");
+
+        const unsubscribeMotion = onValue(motionRef, (snapshot) => {
+            if (snapshot.exists()) {
+                setMotion(snapshot.val());
+            }
+        });
+
+        return () => {
+            unsubscribe()
+            unsubscribeMotion()
+        }
     }, [])
 
     const updateDevice = async (
@@ -59,8 +73,11 @@ export default function RoomDetails() {
                         </p>
 
                         <div className="mt-3 flex items-center gap-2">
-                            <div className="border px-2 py-1 bg-green-500 rounded-md">
-                                <p className="text-sm font-inter">Gerakan terdeteksi</p>
+                            <div
+                                className={`px-3 py-1 rounded-md text-white text-sm ${motion ? "bg-green-500" : "bg-red-500"
+                                    }`}
+                            >
+                                {motion ? "Gerakan Terdeteksi" : "Tidak Ada Gerakan"}
                             </div>
                         </div>
                     </div>
