@@ -16,28 +16,27 @@ export default function RoomDetails() {
     const [motion, setMotion] = useState(false)
 
     useEffect(() => {
-        const devicesRef = ref(db, "devices")
+        const devicesRef = ref(db, "devices");
 
         const unsubscribe = onValue(devicesRef, (snapshot) => {
-            if (snapshot.exists()) {
-                setDevices(snapshot.val())
-                console.log(snapshot.val())
-            }
-        })
+            if (!snapshot.exists()) return;
 
-        const motionRef = ref(db, "devices/motion");
+            const data = snapshot.val();
 
-        const unsubscribeMotion = onValue(motionRef, (snapshot) => {
-            if (snapshot.exists()) {
-                setMotion(snapshot.val());
-            }
+            setDevices({
+                lamp1: data.lamp1,
+                lamp2: data.lamp2,
+                lamp3: data.lamp3,
+            });
+
+            setMotion(data.motion);
+
+            console.log(data);
         });
 
-        return () => {
-            unsubscribe()
-            unsubscribeMotion()
-        }
-    }, [])
+        return () => unsubscribe();
+
+    }, []);
 
     const updateDevice = async (
         device: "lamp1" | "lamp2" | "lamp3"
@@ -90,7 +89,7 @@ export default function RoomDetails() {
                         </h2>
 
                         {/* Lampu */}
-                        <div className="flex items-center justify-between py-3 border-b border-gray-100 font-inter">
+                        <div className="flex items-center justify-between py-3 border-b border-gray-100 font-inter text-black">
                             <span>Lampu Kelas</span>
 
                             <Switch
@@ -100,7 +99,7 @@ export default function RoomDetails() {
                         </div>
 
                         {/* Tv */}
-                        <div className="flex items-center justify-between py-3 border-b border-gray-100 font-inter">
+                        <div className="flex items-center justify-between py-3 border-b border-gray-100 font-inter text-black">
                             <span>Smart TV</span>
 
                             <button>
@@ -112,7 +111,7 @@ export default function RoomDetails() {
                         </div>
 
                         {/* AC */}
-                        <div className="flex items-center justify-between py-3 font-inter">
+                        <div className="flex items-center justify-between py-3 font-inter text-black">
                             <span>AC</span>
 
                             <Switch
