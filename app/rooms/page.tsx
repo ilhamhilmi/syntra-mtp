@@ -1,8 +1,41 @@
 "use client"
+
+import { useEffect, useState } from "react"
 import DockClient from "@/components/dock/DockClient/page"
 import Link from "next/link"
+import { ref, onValue, set } from "firebase/database"
+import { db } from "@/lib/firebase"
 
 export default function Rooms() {
+    const [devices, setDevices] = useState({
+        lamp1: false,
+        lamp2: false,
+        lamp3: false
+    })
+    const [motion, setMotion] = useState(false)
+
+    useEffect(() => {
+        const devicesRef = ref(db, "devices");
+
+        const unsubscribe = onValue(devicesRef, (snapshot) => {
+            if (!snapshot.exists()) return;
+
+            const data = snapshot.val();
+
+            setDevices({
+                lamp1: data.lamp1,
+                lamp2: data.lamp2,
+                lamp3: data.lamp3,
+            });
+
+            setMotion(data.motion);
+
+            console.log(data);
+        });
+
+        return () => unsubscribe();
+
+    }, []);
     return (
         <div>
             <DockClient />
@@ -33,8 +66,11 @@ export default function Rooms() {
                             </p>
 
                             <div className="mt-4 flex items-center gap-2">
-                                <div className="border px-2 py-1 bg-green-500 rounded-md">
-                                    <p className="text-sm">Gerakan terdeteksi</p>
+                                <div
+                                    className={`px-3 py-1 rounded-md text-white text-sm font-inter ${motion ? "bg-green-500" : "bg-red-500"
+                                        }`}
+                                >
+                                    {motion ? "Gerakan Terdeteksi" : "Tidak Ada Gerakan"}
                                 </div>
                             </div>
                         </Link>

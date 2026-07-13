@@ -29,7 +29,7 @@ export default function Home() {
               </p>
 
               <h2 className="mt-2 text-4xl font-bold text-gray-900">
-                3
+                2
               </h2>
             </div>
 
@@ -39,7 +39,7 @@ export default function Home() {
               </p>
 
               <h2 className="mt-2 text-4xl font-bold text-gray-900">
-                3
+                1
               </h2>
             </div>
           </div>
