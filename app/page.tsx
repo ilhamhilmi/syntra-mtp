@@ -1,6 +1,4 @@
 "use client"
-import Image from "next/image";
-import { useEffect, useState } from "react";
 import DockClient from "@/components/dock/DockClient/page";
 import ProtectedRoute from "@/components/protect/ProtectedRoute";
 

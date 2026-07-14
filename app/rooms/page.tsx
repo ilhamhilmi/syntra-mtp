@@ -3,12 +3,12 @@
 import { useEffect, useState } from "react"
 import DockClient from "@/components/dock/DockClient/page"
 import Link from "next/link"
-import { ref, onValue, set } from "firebase/database"
+import { ref, onValue } from "firebase/database"
 import { db } from "@/lib/firebase"
 import ProtectedRoute from "@/components/protect/ProtectedRoute"
 
 export default function Rooms() {
-    const [devices, setDevices] = useState({
+    const [, setDevices] = useState({
         lamp1: false,
         lamp2: false,
         lamp3: false

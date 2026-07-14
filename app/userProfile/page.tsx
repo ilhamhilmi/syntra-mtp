@@ -1,8 +1,5 @@
 "use client"
 
-import Image from "next/image"
-import showPass from "@/public/password/eye-alt-svgrepo-com.svg"
-import hidePass from "@/public/password/eye-slash-alt-svgrepo-com.svg"
 import { useState, useEffect } from "react"
 import { auth } from "@/lib/firebase";
 import { signOut, onAuthStateChanged } from "firebase/auth";
@@ -16,8 +13,6 @@ export default function UserProfile() {
     const [user, setUser] = useState<any>(null);
 
     const router = useRouter();
-
-    const [showPassword, setShowPassword] = useState(false)
 
     useEffect(() => {
 
