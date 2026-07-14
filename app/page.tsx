@@ -2,10 +2,11 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import DockClient from "@/components/dock/DockClient/page";
+import ProtectedRoute from "@/components/protect/ProtectedRoute";
 
 export default function Home() {
   return (
-    <div>
+    <ProtectedRoute>
       <DockClient />
 
       <section className="px-4 pb-16 h-screen bg-slate-100 flex items-center">
@@ -46,6 +47,6 @@ export default function Home() {
 
         </div>
       </section>
-    </div>
+    </ProtectedRoute>
   );
 }

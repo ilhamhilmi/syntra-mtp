@@ -5,6 +5,7 @@ import Switch from "@/components/switch/page"
 import { useEffect, useState } from "react"
 import { ref, onValue, set } from "firebase/database"
 import { db } from "@/lib/firebase"
+import ProtectedRoute from "@/components/protect/ProtectedRoute"
 
 export default function RoomDetails() {
     const [devices, setDevices] = useState({
@@ -48,7 +49,7 @@ export default function RoomDetails() {
     };
 
     return (
-        <div>
+        <ProtectedRoute>
             <DockClient />
 
             <section className="min-h-screen bg-slate-100 px-4 py-8 pb-24">
@@ -124,6 +125,6 @@ export default function RoomDetails() {
 
                 </div>
             </section>
-        </div>
+        </ProtectedRoute>
     )
 }

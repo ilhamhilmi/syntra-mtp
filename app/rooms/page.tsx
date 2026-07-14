@@ -5,6 +5,7 @@ import DockClient from "@/components/dock/DockClient/page"
 import Link from "next/link"
 import { ref, onValue, set } from "firebase/database"
 import { db } from "@/lib/firebase"
+import ProtectedRoute from "@/components/protect/ProtectedRoute"
 
 export default function Rooms() {
     const [devices, setDevices] = useState({
@@ -37,7 +38,7 @@ export default function Rooms() {
 
     }, []);
     return (
-        <div>
+        <ProtectedRoute>
             <DockClient />
 
             <section className="min-h-screen bg-slate-100 px-4 pt-8 pb-28">
@@ -96,6 +97,6 @@ export default function Rooms() {
 
                 </div>
             </section>
-        </div>
+        </ProtectedRoute>
     )
 }
