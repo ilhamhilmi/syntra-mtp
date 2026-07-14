@@ -3,14 +3,13 @@ import { getDatabase } from "firebase/database";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBwY0N4va7pUaScxVWs_85OmwGuYX6IwxI",
-  authDomain: "syntra-mtp.firebaseapp.com",
-  databaseURL:
-    "https://syntra-mtp-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "syntra-mtp",
-  storageBucket: "syntra-mtp.firebasestorage.app",
-  messagingSenderId: "654234509735",
-  appId: "1:654234509735:web:b6dfb782771ba385939682",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY!,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN!,
+  databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL!,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID!,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET!,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID!,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID!,
 };
 
 const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
