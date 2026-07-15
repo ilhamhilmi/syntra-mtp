@@ -6,6 +6,7 @@ import Link from "next/link"
 import { ref, onValue } from "firebase/database"
 import { db } from "@/lib/firebase"
 import ProtectedRoute from "@/components/protect/ProtectedRoute"
+import { MdPerson, MdPersonOff } from "react-icons/md"
 
 export default function Rooms() {
     const [, setDevices] = useState({
@@ -68,9 +69,11 @@ export default function Rooms() {
 
                             <div className="mt-4 flex items-center gap-2">
                                 <div
-                                    className={`px-3 py-1 rounded-md text-white text-sm font-inter ${motion ? "bg-green-500" : "bg-red-500"
+                                    className={`px-3 py-1 rounded-md text-white text-sm font-inter flex items-center gap-1 ${motion ? "bg-green-500" : "bg-red-500"
                                         }`}
                                 >
+                                    {motion ? <MdPerson size={20} /> : <MdPersonOff size={20} />}
+
                                     {motion ? "Gerakan Terdeteksi" : "Tidak Ada Gerakan"}
                                 </div>
                             </div>
@@ -86,8 +89,9 @@ export default function Rooms() {
                             </p>
 
                             <div className="mt-4 flex items-center gap-2">
-                                <div className="border px-2 py-1 bg-secondary rounded-md">
-                                    <p className="text-sm text-white">Tidak ada gerakan</p>
+                                <div className="border px-2 py-1 bg-secondary rounded-md flex gap-2">
+                                    <MdPersonOff size={20}/>
+                                    <p className="text-sm text-white font-inter">Tidak ada gerakan</p>
                                 </div>
                             </div>
                         </div>

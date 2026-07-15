@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import { ref, onValue, set } from "firebase/database"
 import { db } from "@/lib/firebase"
 import ProtectedRoute from "@/components/protect/ProtectedRoute"
+import { MdPerson, MdPersonOff } from "react-icons/md"
 
 export default function RoomDetails() {
     const [devices, setDevices] = useState({
@@ -74,9 +75,11 @@ export default function RoomDetails() {
 
                         <div className="mt-3 flex items-center gap-2">
                             <div
-                                className={`px-3 py-1 rounded-md text-white text-sm font-inter ${motion ? "bg-green-500" : "bg-red-500"
+                                className={`px-3 py-1 rounded-md text-white text-sm font-inter flex items-center gap-1 ${motion ? "bg-green-500" : "bg-red-500"
                                     }`}
                             >
+                                {motion ? <MdPerson size={20} /> : <MdPersonOff size={20} />}
+
                                 {motion ? "Gerakan Terdeteksi" : "Tidak Ada Gerakan"}
                             </div>
                         </div>
