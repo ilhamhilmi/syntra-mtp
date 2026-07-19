@@ -9,7 +9,6 @@ import ProtectedRoute from "@/components/protect/ProtectedRoute"
 import DockClient from "@/components/dock/DockClient/page"
 import { CiMail, CiLogout } from "react-icons/ci";
 
-
 export default function UserProfile() {
     const [user, setUser] = useState<any>(null);
 
