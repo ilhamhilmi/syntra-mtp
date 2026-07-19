@@ -2,8 +2,16 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #F5F0EB;
+  --foreground: #3D3D3D;
+  --clay-surface: #F0EBE3;
+  --clay-shadow-light: #FFFFFF;
+  --clay-shadow-dark: #D4C9BC;
+  --clay-shadow-inset-light: #E8E0D6;
+  --clay-shadow-inset-dark: #FAF6F0;
+  --clay-radius: 20px;
+  --clay-radius-sm: 12px;
+  --clay-radius-xs: 8px;
 }
 
 @theme inline {
@@ -11,20 +19,277 @@
   --color-foreground: var(--foreground);
   --color-primary: #2DD4BF;
   --color-secondary: #8F9097;
+  --color-clay-surface: var(--clay-surface);
+  --color-clay-shadow-light: var(--clay-shadow-light);
+  --color-clay-shadow-dark: var(--clay-shadow-dark);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-inter: var(--font-inter)
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --font-inter: var(--font-inter);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ===== Claymorphism Reusable Classes ===== */
+
+/* Clay Card - main raised element */
+.clay-card {
+  background: var(--clay-surface);
+  border-radius: var(--clay-radius);
+  box-shadow:
+    8px 8px 16px var(--clay-shadow-dark),
+    -8px -8px 16px var(--clay-shadow-light);
+  transition: all 0.2s ease;
+}
+
+.clay-card-sm {
+  background: var(--clay-surface);
+  border-radius: var(--clay-radius-sm);
+  box-shadow:
+    6px 6px 12px var(--clay-shadow-dark),
+    -6px -6px 12px var(--clay-shadow-light);
+  transition: all 0.2s ease;
+}
+
+.clay-card-xs {
+  background: var(--clay-surface);
+  border-radius: var(--clay-radius-xs);
+  box-shadow:
+    4px 4px 8px var(--clay-shadow-dark),
+    -4px -4px 8px var(--clay-shadow-light);
+  transition: all 0.2s ease;
+}
+
+/* Clay Card Hover - lifts more */
+.clay-card:hover,
+.clay-card-sm:hover,
+.clay-card-xs:hover {
+  box-shadow:
+    10px 10px 20px var(--clay-shadow-dark),
+    -10px -10px 20px var(--clay-shadow-light);
+  transform: translateY(-2px);
+}
+
+/* Clay Card Pressed - inset effect */
+.clay-card-pressed {
+  background: var(--clay-surface);
+  border-radius: var(--clay-radius);
+  box-shadow:
+    inset 4px 4px 8px var(--clay-shadow-inset-light),
+    inset -4px -4px 8px var(--clay-shadow-inset-dark);
+}
+
+.clay-card-pressed-sm {
+  background: var(--clay-surface);
+  border-radius: var(--clay-radius-sm);
+  box-shadow:
+    inset 3px 3px 6px var(--clay-shadow-inset-light),
+    inset -3px -3px 6px var(--clay-shadow-inset-dark);
+}
+
+/* Clay Button */
+.clay-btn {
+  background: var(--clay-surface);
+  border-radius: var(--clay-radius-sm);
+  box-shadow:
+    5px 5px 10px var(--clay-shadow-dark),
+    -5px -5px 10px var(--clay-shadow-light);
+  transition: all 0.15s ease;
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+}
+
+.clay-btn:hover {
+  box-shadow:
+    7px 7px 14px var(--clay-shadow-dark),
+    -7px -7px 14px var(--clay-shadow-light);
+  transform: translateY(-1px);
+}
+
+.clay-btn:active {
+  box-shadow:
+    inset 3px 3px 6px var(--clay-shadow-inset-light),
+    inset -3px -3px 6px var(--clay-shadow-inset-dark);
+  transform: translateY(0);
+}
+
+/* Clay Primary Button */
+.clay-btn-primary {
+  background: #2DD4BF;
+  border-radius: var(--clay-radius-sm);
+  box-shadow:
+    5px 5px 10px var(--clay-shadow-dark),
+    -5px -5px 10px var(--clay-shadow-light);
+  transition: all 0.15s ease;
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+  color: white;
+}
+
+.clay-btn-primary:hover {
+  box-shadow:
+    7px 7px 14px var(--clay-shadow-dark),
+    -7px -7px 14px var(--clay-shadow-light);
+  transform: translateY(-1px);
+}
+
+.clay-btn-primary:active {
+  box-shadow:
+    inset 3px 3px 6px rgba(0,0,0,0.15),
+    inset -3px -3px 6px rgba(255,255,255,0.3);
+  transform: translateY(0);
+}
+
+/* Clay Danger Button */
+.clay-btn-danger {
+  background: #EF4444;
+  border-radius: var(--clay-radius-sm);
+  box-shadow:
+    5px 5px 10px var(--clay-shadow-dark),
+    -5px -5px 10px var(--clay-shadow-light);
+  transition: all 0.15s ease;
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+  color: white;
+}
+
+.clay-btn-danger:hover {
+  box-shadow:
+    7px 7px 14px var(--clay-shadow-dark),
+    -7px -7px 14px var(--clay-shadow-light);
+  transform: translateY(-1px);
+}
+
+.clay-btn-danger:active {
+  box-shadow:
+    inset 3px 3px 6px rgba(0,0,0,0.15),
+    inset -3px -3px 6px rgba(255,255,255,0.3);
+  transform: translateY(0);
+}
+
+/* Clay Input */
+.clay-input {
+  background: var(--clay-surface);
+  border-radius: var(--clay-radius-sm);
+  box-shadow:
+    inset 3px 3px 6px var(--clay-shadow-inset-light),
+    inset -3px -3px 6px var(--clay-shadow-inset-dark);
+  border: none;
+  outline: none;
+  transition: all 0.2s ease;
+  color: var(--foreground);
+  width: 100%;
+  padding: 10px 16px;
+  font-family: var(--font-inter);
+}
+
+.clay-input:focus {
+  box-shadow:
+    inset 4px 4px 8px var(--clay-shadow-inset-light),
+    inset -4px -4px 8px var(--clay-shadow-inset-dark),
+    0 0 0 2px rgba(45, 212, 191, 0.3);
+}
+
+.clay-input::placeholder {
+  color: var(--color-secondary);
+}
+
+/* Clay Badge */
+.clay-badge {
+  background: var(--clay-surface);
+  border-radius: var(--clay-radius-xs);
+  box-shadow:
+    3px 3px 6px var(--clay-shadow-dark),
+    -3px -3px 6px var(--clay-shadow-light);
+  padding: 4px 12px;
+  font-size: 0.875rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.clay-badge-green {
+  background: #2DD4BF;
+  color: white;
+  border-radius: var(--clay-radius-xs);
+  box-shadow:
+    3px 3px 6px var(--clay-shadow-dark),
+    -3px -3px 6px var(--clay-shadow-light);
+  padding: 4px 12px;
+  font-size: 0.875rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.clay-badge-red {
+  background: #EF4444;
+  color: white;
+  border-radius: var(--clay-radius-xs);
+  box-shadow:
+    3px 3px 6px var(--clay-shadow-dark),
+    -3px -3px 6px var(--clay-shadow-light);
+  padding: 4px 12px;
+  font-size: 0.875rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Clay Dock Item */
+.clay-dock-item {
+  background: var(--clay-surface);
+  border-radius: 16px;
+  box-shadow:
+    4px 4px 8px var(--clay-shadow-dark),
+    -4px -4px 8px var(--clay-shadow-light);
+  transition: all 0.15s ease;
+  cursor: pointer;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clay-dock-item:hover {
+  box-shadow:
+    6px 6px 12px var(--clay-shadow-dark),
+    -6px -6px 12px var(--clay-shadow-light);
+  transform: translateY(-1px);
+}
+
+.clay-dock-item:active {
+  box-shadow:
+    inset 3px 3px 6px var(--clay-shadow-inset-light),
+    inset -3px -3px 6px var(--clay-shadow-inset-dark);
+  transform: translateY(0);
+}
+
+/* Clay Dock Panel */
+.clay-dock-panel {
+  background: var(--clay-surface);
+  border-radius: 20px;
+  box-shadow:
+    6px 6px 12px var(--clay-shadow-dark),
+    -6px -6px 12px var(--clay-shadow-light);
+  border: none;
+}
+
+/* Clay Divider */
+.clay-divider {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--clay-shadow-dark),
+    transparent
+  );
+  margin: 12px 0;
+  border: none;
 }
