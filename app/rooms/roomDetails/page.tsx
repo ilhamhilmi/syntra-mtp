@@ -53,59 +53,57 @@ export default function RoomDetails() {
         <ProtectedRoute>
             <DockClient />
 
-            <section className="min-h-screen bg-slate-100 px-4 py-8 pb-24">
+            <section className="min-h-screen px-4 py-8 pb-24">
                 <div className="container mx-auto max-w-md">
 
                     {/* Header */}
                     <div className="mb-6">
-                        <h1 className="text-3xl font-bold text-gray-800 font-inter">
+                        <h1 className="text-3xl font-bold text-foreground font-inter">
                             Ruang C1-1
                         </h1>
 
-                        <p className="text-sm text-secondary font-inter">
+                        <p className="text-sm text-secondary font-inter mt-1">
                             Lantai 1 - Gedung C
                         </p>
                     </div>
 
                     {/* Motion Status */}
-                    <div className="rounded-2xl bg-white border border-gray-200 p-5 shadow-sm mb-4">
+                    <div className="clay-card-sm p-5 mb-5">
                         <p className="text-sm text-secondary font-inter">
                             Status Gerakan
                         </p>
 
                         <div className="mt-3 flex items-center gap-2">
-                            <div
-                                className={`px-3 py-1 rounded-md text-white text-sm font-inter flex items-center gap-1 ${motion ? "bg-green-500" : "bg-red-500"
-                                    }`}
-                            >
-                                {motion ? <MdPerson size={20} /> : <MdPersonOff size={20} />}
-
+                            <div className={motion ? "clay-badge-green" : "clay-badge-red"}>
+                                {motion ? <MdPerson size={18} /> : <MdPersonOff size={18} />}
                                 {motion ? "Gerakan Terdeteksi" : "Tidak Ada Gerakan"}
                             </div>
                         </div>
                     </div>
 
                     {/* Device Control */}
-                    <div className="rounded-2xl bg-white border border-gray-200 p-5 shadow-sm">
+                    <div className="clay-card-sm p-5">
 
-                        <h2 className="font-semibold text-gray-800 mb-5 font-inter">
+                        <h2 className="font-semibold text-foreground mb-5 font-inter text-lg">
                             Kontrol Perangkat
                         </h2>
 
-                        {/* Lampu */}
-                        <div className="flex items-center justify-between py-3 border-b border-gray-100 font-inter text-black">
-                            <span>Lampu Kelas</span>
+                        <div className="clay-divider" />
 
+                        {/* Lampu */}
+                        <div className="flex items-center justify-between py-3 font-inter text-foreground">
+                            <span className="font-medium">Lampu Kelas</span>
                             <Switch
                                 checked={devices.lamp1}
                                 onChange={() => updateDevice("lamp1")}
                             />
                         </div>
 
-                        {/* Tv */}
-                        <div className="flex items-center justify-between py-3 border-b border-gray-100 font-inter text-black">
-                            <span>Smart TV</span>
+                        <div className="clay-divider" />
 
+                        {/* Tv */}
+                        <div className="flex items-center justify-between py-3 font-inter text-foreground">
+                            <span className="font-medium">Smart TV</span>
                             <button>
                                 <Switch
                                     checked={devices.lamp2}
@@ -114,10 +112,11 @@ export default function RoomDetails() {
                             </button>
                         </div>
 
-                        {/* AC */}
-                        <div className="flex items-center justify-between py-3 font-inter text-black">
-                            <span>AC</span>
+                        <div className="clay-divider" />
 
+                        {/* AC */}
+                        <div className="flex items-center justify-between py-3 font-inter text-foreground">
+                            <span className="font-medium">AC</span>
                             <Switch
                                 checked={devices.lamp3}
                                 onChange={() => updateDevice("lamp3")}

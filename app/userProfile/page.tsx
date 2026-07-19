@@ -49,23 +49,17 @@ export default function UserProfile() {
 
     return (
         <ProtectedRoute>
-            <section className="items-center flex justify-center h-screen bg-slate-100">
+            <section className="items-center flex justify-center min-h-screen">
                 <DockClient />
                 <div className="container mx-auto">
                     <div className="flex flex-col items-center justify-center">
-                        <div className="bg-white border border-secondary text-center xl:w-1/4 w-4/5 px-6 py-10 space-y-3 shadow-md rounded-sm">
-                            <h1 className="font-inter text-black font-semibold text-3xl mb-10">Informasi Akun</h1>
+                        <div className="clay-card text-center xl:w-1/4 w-4/5 px-8 py-12 space-y-5">
+                            <h1 className="font-inter text-foreground font-semibold text-3xl mb-6">Informasi Akun</h1>
                             <div className="relative">
-                                <h1 className="border border-slate-500 w-full p-2 rounded-md font-inter text-secondary focus:border-white text-start">{user?.email}</h1>
-                                <CiMail className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-black" />
+                                <h1 className="clay-input text-start">{user?.email}</h1>
+                                <CiMail className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-secondary" />
                             </div>
-                            {/* <div className="relative">
-                            <input type={showPassword ? "text" : "password"} className="border border-slate-500 w-full p-2 rounded-md font-inter text-secondary focus:border-white" placeholder="Kata sandi" autoComplete="off" />
-                            <button type='button' onClick={() => setShowPassword(!showPassword)} className='absolute right-4 top-1/2 -translate-y-1/2'>
-                                <Image src={showPassword ? hidePass : showPass} alt={showPassword ? "Hide password" : "Show password"} width={20} height={20} />
-                            </button>
-                        </div> */}
-                            <button onClick={handleLogout} className="border rounded-md w-full py-2 font-inter bg-red-500 border-red-500  text-white font-poppins hover:bg-red-600 hover:border-red-600 cursor-pointer duration-200 flex items-center justify-center uppercase font-semibold">Logout<CiLogout className="ml-1 text-white h-5 w-5" /></button>
+                            <button onClick={handleLogout} className="clay-btn-danger w-full py-3 flex items-center justify-center uppercase font-semibold text-sm">Logout<CiLogout className="ml-2 text-white h-5 w-5" /></button>
                         </div>
                     </div>
                 </div>

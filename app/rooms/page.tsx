@@ -42,24 +42,24 @@ export default function Rooms() {
         <ProtectedRoute>
             <DockClient />
 
-            <section className="min-h-screen bg-slate-100 px-4 pt-8 pb-28">
+            <section className="min-h-screen px-4 pt-8 pb-28">
                 <div className="container mx-auto max-w-md">
 
                     {/* Header */}
                     <div className="mb-6">
-                        <h1 className="text-3xl font-bold text-gray-800 font-inter">
+                        <h1 className="text-3xl font-bold text-foreground font-inter">
                             Ruangan
                         </h1>
-                        <p className="text-sm text-secondary font-inter">
+                        <p className="text-sm text-secondary font-inter mt-1">
                             Daftar ruang kelas Smart Classroom.
                         </p>
                     </div>
 
                     {/* Rooms */}
-                    <div className="grid grid-cols-1 gap-3">
+                    <div className="grid grid-cols-1 gap-5">
 
-                        <Link href="/rooms/roomDetails" className="rounded-2xl bg-white border border-gray-200 shadow-sm p-4 cursor-pointer hover:shadow-md transition">
-                            <h1 className="font-semibold text-gray-800 font-inter">
+                        <Link href="/rooms/roomDetails" className="clay-card-sm p-5 block">
+                            <h1 className="font-semibold text-foreground font-inter text-lg">
                                 Ruang C1-1
                             </h1>
 
@@ -68,19 +68,15 @@ export default function Rooms() {
                             </p>
 
                             <div className="mt-4 flex items-center gap-2">
-                                <div
-                                    className={`px-3 py-1 rounded-md text-white text-sm font-inter flex items-center gap-1 ${motion ? "bg-green-500" : "bg-red-500"
-                                        }`}
-                                >
-                                    {motion ? <MdPerson size={20} /> : <MdPersonOff size={20} />}
-
+                                <div className={motion ? "clay-badge-green" : "clay-badge-red"}>
+                                    {motion ? <MdPerson size={18} /> : <MdPersonOff size={18} />}
                                     {motion ? "Gerakan Terdeteksi" : "Tidak Ada Gerakan"}
                                 </div>
                             </div>
                         </Link>
 
-                        <div className="rounded-2xl bg-white border border-gray-200 shadow-sm p-4 cursor-pointer hover:shadow-md transition">
-                            <h1 className="font-semibold text-gray-800 font-inter">
+                        <div className="clay-card-sm p-5">
+                            <h1 className="font-semibold text-foreground font-inter text-lg">
                                 Ruang C1-1
                             </h1>
 
@@ -89,13 +85,12 @@ export default function Rooms() {
                             </p>
 
                             <div className="mt-4 flex items-center gap-2">
-                                <div className="border px-2 py-1 bg-secondary rounded-md flex gap-2">
-                                    <MdPersonOff size={20}/>
-                                    <p className="text-sm text-white font-inter">Tidak ada gerakan</p>
+                                <div className="clay-badge-red">
+                                    <MdPersonOff size={18} />
+                                    Tidak ada gerakan
                                 </div>
                             </div>
                         </div>
-
 
                     </div>
 
